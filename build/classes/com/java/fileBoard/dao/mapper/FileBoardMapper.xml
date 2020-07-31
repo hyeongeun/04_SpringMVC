@@ -119,7 +119,11 @@
 		select * from board where board_number=#{boardNumber}
 		]]>
 	</select>
-
+	<delete id="board_delete">
+		<![CDATA[
+		delete from board where board_number=to_number(#{boardNumber}) and password=#{password}
+		]]>
+	</delete>
 
 
 <!--
@@ -137,10 +141,6 @@
 	</update>
 
 
-	<delete id="board_delete">
-		-<![CDATA[
-		delete from board where board_number=to_number(#{boardNumber}) and password=#{password}
-		]]>
-	</delete> -->
+	 -->
 
 </mapper>

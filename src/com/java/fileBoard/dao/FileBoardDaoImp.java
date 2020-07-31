@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.java.fileBoard.dto.FileBoardDTO;
 
@@ -52,7 +53,6 @@ public class FileBoardDaoImp implements FileBoardDao {
 		Map<String,Integer> hashMap=new HashMap<String,Integer>();
 		hashMap.put("startRow",startRow);
 		hashMap.put("endRow",endRow);
-		sqlSessionTemplate.selectList("board_list",hashMap);
 		return sqlSessionTemplate.selectList("board_list",hashMap);
 
 	}
@@ -68,6 +68,16 @@ public class FileBoardDaoImp implements FileBoardDao {
 	public FileBoardDTO fileBoardSelect(int boardNumber) {
 		return sqlSessionTemplate.selectOne("board_read",boardNumber);
 	}
+
+	@Override
+	public int fileBoardDelete(String password, int boardNumber) {
+		Map<String,Object> hashMap=new HashMap<String,Object>();
+		hashMap.put("password",password);
+		hashMap.put("boardNumber",boardNumber);
+		return sqlSessionTemplate.delete("board_delete",hashMap);
+		
+	}
+
 }
 
 

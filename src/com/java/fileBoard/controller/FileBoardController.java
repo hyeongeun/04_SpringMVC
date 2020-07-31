@@ -80,12 +80,13 @@ public class FileBoardController extends MultiActionController{
 		return mav;
 	}
 	
-	public void fileBoardDeleteOk(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView fileBoardDeleteOk(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request",request);
 		
 		fileBoardService.fileBoardDeleteOk(mav);
 		
+		return mav;
 	}
 	
 }

@@ -267,7 +267,12 @@ public class FileBoardServiceImp implements FileBoardService {
 		
 		//HAspect.logger.info(HAspect.logMsg+"password: "+password+"\t pageNumber: "+pageNumber+"\t boardNumber: "+boardNumber);
 		
-	
+		mav.addObject("pageNumber", pageNumber);
+		int check = fileBoardDao.fileBoardDelete(password,boardNumber);
+		//HAspect.logger.info(HAspect.logMsg+"check: " +check);
+		mav.addObject("check", check);
+		
+		mav.setViewName("fileBoard/deleteOk");
 		
 	}
 	
